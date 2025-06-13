@@ -12,7 +12,7 @@
 	<groupId>nit</groupId>
 	<artifactId>Boot-QueAndAns-Web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>Boot-QueAndAns-WebApplication</name>
 	<description>project for Spring Boot</description>
 	<url />
@@ -96,7 +96,7 @@
 	</dependencies>
 
 	<build>
-	<finalName>selfTestApp</finalName>
+		<finalName>selfTestApp</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -114,6 +114,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<mainClass>com.yourpackage.BootQueAndAnsWebApplication</mainClass>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
