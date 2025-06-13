@@ -114,7 +114,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.yourpackage.BootQueAndAnsWebApplication</mainClass>
+					<mainClass>com.siva.BootQueAndAnsWebApplication</mainClass>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
