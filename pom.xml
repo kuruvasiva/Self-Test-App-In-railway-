@@ -96,7 +96,7 @@
 	</dependencies>
 
 	<build>
-	<finalName>test.com</finalName>
+	<finalName>selfTestApp</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
