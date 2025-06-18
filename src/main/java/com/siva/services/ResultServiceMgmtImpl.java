@@ -26,7 +26,12 @@ public class ResultServiceMgmtImpl implements IResutServiceMgmt {
 		Integer resultId = (Integer) session.getAttribute("sesResultId");
 		Optional<ResultEntity> resultById = resultRepo.findById(resultId);
 		ResultEntity resultEntity = resultById.get();
-		resultEntity.setExamCount(resultEntity.getExamCount() + 1);
+		Integer examCount = resultEntity.getExamCount();
+		if (examCount == null) {
+			examCount = 0;
+		}
+		resultEntity.setExamCount((++examCount));
+
 		resultEntity.setUserThoughts(saveFeedbackMsg);
 		ResultEntity save = resultRepo.save(resultEntity);
 		return "upddated result data is with this Id " + save.getResultId();
@@ -41,10 +46,7 @@ public class ResultServiceMgmtImpl implements IResutServiceMgmt {
 	@Override
 	public List<ResultEntity> listOfResultDetails() {
 		// TODO Auto-generated method stub
-		return resultRepo.findAll()
-				.stream()
-				.sorted((r1, r2) -> r1.getResultId().compareTo(r2.getResultId()))
-				.toList();
+		return resultRepo.findAll().stream().sorted((r1, r2) -> r1.getResultId().compareTo(r2.getResultId())).toList();
 	}
 
 	@Override
@@ -52,16 +54,16 @@ public class ResultServiceMgmtImpl implements IResutServiceMgmt {
 		// TODO Auto-generated method stub
 		return resultRepo.findByUser(user);
 	}
-	
+
 	@Override
 	public String deleteTestResultsById(Integer resultId) {
-		// TODO 
+		// TODO
 		Optional<ResultEntity> resultById = resultRepo.findById(resultId);
-		if(resultById.isPresent()) {
-		    ResultEntity result = resultById.get();
-		    result.setUser(null); // Break the association
-		    resultRepo.delete(result); // safer than deleteById when using associations
-		    return "Successfully deleted result with ID " + resultId;
+		if (resultById.isPresent()) {
+			ResultEntity result = resultById.get();
+			result.setUser(null); // Break the association
+			resultRepo.delete(result); // safer than deleteById when using associations
+			return "Successfully deleted result with ID " + resultId;
 		}
 		return "Deletion failed! Invalid result ID: " + resultId;
 		/*
@@ -72,5 +74,5 @@ public class ResultServiceMgmtImpl implements IResutServiceMgmt {
 		}
 		return "Deletion failed! Invalid result ID: " + resultId;*/
 	}
-	
+
 }

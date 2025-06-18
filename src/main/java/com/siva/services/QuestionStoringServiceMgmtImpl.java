@@ -58,17 +58,18 @@ public class QuestionStoringServiceMgmtImpl implements IQuestionStoringServicesM
 	}
 
 	@Override
-	public Set<QuestionStoringEntity> setOfQuestionBYCategory(String categoryName) {
+	public Set<QuestionStoringEntity> setOfQuestionBYCategory(String categoryName, Integer userId) {
 		//
 		Set<QuestionStoringEntity> questionsByCategory = questionSRepo.findByQuestionCategory(categoryName);
 		if (questionsByCategory.isEmpty()) {
 			
 			return null;
 		}
-		ResultEntity resultbyCategory = resultRepo.findByCategory(categoryName);
+		Optional<UserDetails> userFindIyId = userRepo.findById(userId);
+		ResultEntity resultbyCategory = resultRepo.findByCategoryAndUser(categoryName,userFindIyId.get());
 		if (resultbyCategory == null) {
-			Integer userId = (Integer) session.getAttribute("sessionId");
-			Optional<UserDetails> userFindIyId = userRepo.findById(userId);
+		
+			//Optional<UserDetails> userFindIyId = userRepo.findById(userId);
 			ResultEntity newResults = new ResultEntity();
 			newResults.setCategory(categoryName);
 			newResults.setUser(userFindIyId.get());
@@ -107,8 +108,6 @@ public class QuestionStoringServiceMgmtImpl implements IQuestionStoringServicesM
 			resultEntity.setCorrectAnswers(correctAns);
 			resultEntity.setResultPercentage(roundedPercentage);
 			resultRepo.save(resultEntity);
-
-			session.setAttribute("percentage", "Per ::" + roundedPercentage + " %");
 			return "<div style='color:gray;'>Your correct answers : <i style='color:#0f9b0f;'>" + correctAns
 					+ "</i><br/>Your score: <b style='color:blue;'>" + String.format("%.2f", roundedPercentage)
 					+ "%</b>" + "<br>Wrong answers: <b style='color:red;'>" + (totalCount - correctAns) + "</b></div>";

@@ -56,7 +56,7 @@ public class QuestionStoringController {
 				|| category.equalsIgnoreCase("Technology") || category.equalsIgnoreCase("General")
 				|| category.equalsIgnoreCase("Lifestyle") || category.equalsIgnoreCase("Career")) {
 
-			Set<QuestionStoringEntity> setOfQuestions = questionServices.setOfQuestionBYCategory(category);
+			Set<QuestionStoringEntity> setOfQuestions = questionServices.setOfQuestionBYCategory(category,userId);
 			if(setOfQuestions== null) {
 				map.put("category", category);
 				map.put("msg", "<u style='font-size:30px; color:white;'>["+category+"]</u> Category questions not in database....");

@@ -26,5 +26,5 @@ public interface IQuestionStoringServicesMgmt {
 	
 	public  Set<QuestionStoringEntity> setOfQuestionBYUser();
 	
-	public  Set<QuestionStoringEntity> setOfQuestionBYCategory(String categoryName);
+	public  Set<QuestionStoringEntity> setOfQuestionBYCategory(String categoryName,Integer UserId);
 }

@@ -106,7 +106,6 @@ body.dark-mode {
 				type="file" id="profileImgInput" accept="image/*"
 				style="display: none;" />
 			<p id="currentTime"></p>
-			<h3 class="text-success">${percentage}</h3>
 		</div>
 		<div class="right-controls">
 			<a href="logout" class="btn btn-danger"><b>Logout</b></a>
@@ -144,42 +143,55 @@ body.dark-mode {
 	</div>
 
 	<!-- Test Modal -->
-	<div class="modal fade" id="testModal" tabindex="-1"
-		aria-labelledby="testModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Select Test Category</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body d-grid">
-					<button class="btn btn-outline-secondary" id="selectedCategory"
-						onclick="selectCategory('UI')">UI Full Stack</button>
-					<button class="btn btn-outline-danger" id="selectedCategory"
-						onclick="selectCategory('Java')">Java Full Stack</button>
+	<div class="modal fade" id="testModal" tabindex="-1" aria-labelledby="testModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- modal-lg for better width -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="testModalLabel">Select Test Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
 
-					<button class="btn btn-outline-info" id="selectedCategory"
-						onclick="selectCategory('Python')">Python Full Stack</button>
+      <div class="modal-body">
+        <div class="row g-3"> <!-- g-3 adds consistent spacing -->
+          <!-- Each button is placed in col-12 for mobile and col-md-6 or col-lg-4 for wider screens -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <button class="btn btn-outline-secondary w-100" onclick="selectCategory('UI')">UI Full Stack</button>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <button class="btn btn-outline-danger w-100" onclick="selectCategory('Java')">Java Full Stack</button>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <button class="btn btn-outline-info w-100" onclick="selectCategory('Python')">Python Full Stack</button>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <button class="btn btn-outline-dark w-100" onclick="selectCategory('.Net')">C# or .Net Full Stack</button>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <button class="btn btn-outline-primary w-100" onclick="selectCategory('Technology')">
+              Other Technology & Innovation (IT, AI, Software, Digital)
+            </button>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <button class="btn btn-outline-success w-100" onclick="selectCategory('General')">
+              Government Exams & Current Affairs (Sports, English)
+            </button>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <button class="btn btn-outline-warning w-100" onclick="selectCategory('Lifestyle')">
+              Life & Society, Entertainment, Culture, Agriculture, Food
+            </button>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <button class="btn btn-outline-info w-100" onclick="selectCategory('Career')">
+              Career & Interviews, Business, Jobs
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-					<button class="btn btn-outline-dark" id="selectedCategory"
-						onclick="selectCategory('.Net')">C# or .Net Full Stack</button>
-
-					<button class="btn btn-outline-primary" id="selectedCategory"
-						onclick="selectCategory('Technology')">Other Technology &
-						Innovation (IT, AI, Software, Digital)</button>
-					<button class="btn btn-outline-success" id="selectedCategory"
-						onclick="selectCategory('General')">Government Exams &
-						Current Affairs(Sport, English)...</button>
-					<button class="btn btn-outline-warning" id="selectedCategory"
-						onclick="selectCategory('Lifestyle')">Life&Society,Entertainment,Culture,Agriculture,food...</button>
-					<button class="btn btn-outline-info" id="selectedCategory"
-						onclick="selectCategory('Career')">Career&Professional
-						Interviews,Business,Jobs...</button>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<!-- Admin Modal -->
 	<div class="modal fade" id="adminModal" tabindex="-1"
